@@ -1,0 +1,30 @@
+---
+title: "Data Products Assignment 1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Date 2018/07/03
+## UFO Sightings listed by longitude and latiude. Hover over to veiw description of incident.
+## Data are located here: https://github.com/planetsig/ufo-reports
+
+```{r Map, echo=FALSE, warning=FALSE, message=FALSE}
+
+library(leaflet)
+
+setwd("C:/Users/mlaud/Dropbox/R/Data Products")
+UFOdf<-read.csv('ufo-scrubbed-geocoded-time-standardized.csv',header=FALSE)
+
+my_Map<-leaflet() %>% #pipe command pass argument into line below
+  addTiles() %>%
+ addMarkers(lat=as.numeric(as.character(UFOdf$V10)),lng=as.numeric(as.character(UFOdf$V11)),label=UFOdf$V8,clusterOptions = markerClusterOptions())
+
+my_Map
+
+
+
+```
+
