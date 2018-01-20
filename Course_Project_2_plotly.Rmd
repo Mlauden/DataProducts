@@ -1,0 +1,20 @@
+---
+title: "Course Project 2 plotly"
+author: "MLauden"
+date: "January 19, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r plotly example, message=FALSE, warning=FALSE}
+library(plotly)
+
+plot_ly(mtcars, x=~wt, y=~mpg, mode="markers",color=~disp, size=~hp)
+
+```
+
+
