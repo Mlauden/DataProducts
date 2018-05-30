@@ -1,0 +1,1 @@
+mortalityDF<-read.csv("https://data.cdc.gov/api/views/w9j2-ggv5/rows.csv?accessType=DOWNLOAD")
