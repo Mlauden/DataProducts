@@ -1,39 +1,50 @@
-Mortality Rates Presentation
+Mortality Demographics Presentation
 ========================================================
-author: 
-date: 5/27/2018
+author:MLauden
+date: 5/28/2018
 autosize: true
 
-First Slide
+Mortality Demographics
 ========================================================
 
-Mortality rates by demographics and year
+This slide set accompanies the associated Shiny web application.
+- The dataset is available from the CDC here: https://data.cdc.gov/api/views/w9j2-ggv5/rows.csv?accessType=DOWNLOAD
+- Understanding trends and demographic differences in populations helps provide a better understanding of groups that may be under-served by current health care education and availability
+- The dataset provides information from 1900 to 2015 on longevity broken down by race and gender
+- The program takes a slider as input to control the year range displayed as well as drop down menus for race and sex
+- All R expressions are displayed in the presentation per the Review Criteria
 
-- Mortality rates by all causes of death are decreasing in the US
-- There is still a gap between genders and racial backgrounds in terms of longevity
-- Understanding what populations have these gaps can help organizations provide necessary resources to underserved communitities. 
-
-Slide With Code
+Life Expectancy Demographics by Birth Year
 ========================================================
 
+Below is an R expression to evaluate a graph. The actual plot is displayed on the next slide.
 
-```{r}
+```r
 mortalityDF<-read.csv("https://data.cdc.gov/api/views/w9j2-ggv5/rows.csv?accessType=DOWNLOAD")
 mortalityDFYear<-mortalityDF
 library(UsingR)
 library(ggplot2)
-
-
-     p<- ggplot(mortalityDFYear,aes(x=Year, y=Average.Life.Expectancy..Years., color=Race, shape=Sex))+
+      p<-ggplot(mortalityDFYear,aes(x=Year, y=Average.Life.Expectancy..Years., color=Race, shape=Sex))+
          geom_jitter()+
          ylab("Average Life Expectancy in Years")+
          theme_bw()
-         
-      print(p)
-
 ```
-File Link here: https://mlauden.shinyapps.io/mortality_rate_test/
 
-Slide With Plot
+Data Summary
 ========================================================
+
+
+```r
+print(p)
+```
+
+![plot of chunk unnamed-chunk-2](Mortality Rates Presentation-figure/unnamed-chunk-2-1.png)
+
+Conclusions
+========================================================
+The Shiny Web Application presents a simple way to allow end users to explore the CDCs mortality demographic dataset
+- The application allows the user to input race, sex, and a time range to limit or expand the data
+- The dataset shows increasing average life expectancy for all demographics
+- The dataset is very limited and does not provide granularity to account for other racial groups, causes of death, socioeconomic background necessary to gain a full understanding of mortality rates providing an interesting area for further exploratory data analysis
+
 
